@@ -5,97 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchin <jchin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 15:14:52 by jchin             #+#    #+#             */
-/*   Updated: 2022/03/31 21:26:21 by jchin            ###   ########.fr       */
+/*   Created: 2022/04/02 22:39:40 by jchin             #+#    #+#             */
+/*   Updated: 2022/04/03 16:12:44 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-static size_t	get_strs_count(char const *s, char c)
+static size_t	get_strs_size(char const *s, char c)
 {
-	size_t	cnt_result;
+	size_t		size;
+	int			flag;
+
+	size = 1;
+	flag = 0;
+	while (*s)
+	{
+		if (*s != c)
+			break ;
+		s++;
+	}
+	while (*s)
+	{
+		if (*s == c)
+		{
+			if (*(s + 1) != c && *(s + 1) != 0)
+				size++;
+		}
+		s++;
+	}
+	return (size);
+}
+
+static char	**frees(char **strs, size_t index)
+{
 	size_t	i;
 
 	i = 0;
-	cnt_result = 0;
-	while (s[i] && s[i] == c)
-		++i;
-	while (s[i])
-	{
-		if (s[i] == c)
-			cnt_result += 1;
-		++i;
-	}
-	return (cnt_result);
+	while (i < index)
+		free(strs[i++]);
+	free(strs);
+	return (0);
 }
 
-static void	set_null(char **result, size_t mx_idx)
+char	*get_end(char c, char const *s)
 {
-	size_t	index;
+	char	*result;
 
-	index = 0;
-	while (index < mx_idx)
-		free(result[index++]);
-	free(result);
-}
-
-static int	get_len(char const *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != c)
-		++i;
-	return (i);
-}
-
-static char	*get_string(char **result, size_t idx, char const *s, char c)
-{
-	char	*s_tmp;
-	int		i;
-	int		len;
-
-	len = get_len(s, c);
-	i = 0;
-	s_tmp = (char *)malloc(sizeof(char) * (len + 1));
-	if (!s_tmp)
-	{
-		set_null(result, idx);
-		return (0);
-	}
-	while (i < len)
-	{
-		s_tmp[i] = s[i];
-		++i;
-	}
-	s_tmp[i] = '\0';
-	return (s_tmp);
+	result = (char *)s;
+	while (*result && *result != c)
+		result++;
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
-	size_t	idx;
+	char	**strs;
+	char	*end;
+	size_t	index;
 
-	if (!s)
-		return (0);
-	idx = 0;
-	result = (char **)malloc(sizeof(char *) * get_strs_count(s, c) + 1);
-	if (!result)
+	index = 0;
+	strs = (char **)malloc(sizeof(char *) * (get_strs_size(s, c) + 1));
+	if (!strs)
 		return (0);
 	while (*s)
 	{
-		while (*s && *s == c)
-			++s;
-		if (*s && *s != c)
+		if (*s != c)
 		{
-			result[idx] = get_string(result, idx, s, c);
-			++idx;
+			end = get_end(c, s);
+			strs[index] = (char *)malloc(end - s + 1);
+			if (!(strs[index]))
+				return (frees(strs, index - 1));
+			ft_strlcpy(strs[index++], (char *)s, end - s + 1);
+			s = end;
 		}
-		while (*s && *s != c)
-			++s;
+		else
+			s++;
 	}
-	result[idx] = 0;
-	return (result);
+	strs[index] = 0;
+	return (strs);
 }
