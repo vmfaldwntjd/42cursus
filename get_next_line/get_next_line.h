@@ -6,7 +6,7 @@
 /*   By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 17:34:39 by jchin             #+#    #+#             */
-/*   Updated: 2022/07/04 00:40:01 by jchin            ###   ########.fr       */
+/*   Updated: 2022/07/04 01:05:53 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *left_str, char *buff);
+char	*ft_strjoin(char *current_str, char *buff);
 size_t	ft_strlen(char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
