@@ -6,13 +6,12 @@
 /*   By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 17:33:12 by jchin             #+#    #+#             */
-/*   Updated: 2022/07/03 19:47:07 by jchin            ###   ########.fr       */
+/*   Updated: 2022/07/04 01:01:07 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include	"get_next_line_bonus.h"
 
-//기존 libft에서 만들었던 함수를 인용했는데 validation 추가
 size_t	ft_strlen(char *str)
 {
 	size_t	i;
@@ -25,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-void	*ft_memcpy(void *dst, const void *src, size_t n) //dst의 내용을 src의 내용으로 복사
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t	i;
 
@@ -52,28 +51,27 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-//s1을 free해주는 작업 추가
-char	*ft_strjoin(char *left_str, char *buff) //서로 문자열을 이어붙여주는 함수
+char	*ft_strjoin(char *current_str, char *buff)
 {
 	char	*result;
-	size_t	left_str_len;
+	size_t	current_str_len;
 	size_t	buff_len;
 
-	if (!left_str)//add
+	if (!current_str)
 	{
-		left_str = (char *)malloc(sizeof(char));
-		left_str[0] = '\0';
+		current_str = (char *)malloc(sizeof(char));
+		current_str[0] = '\0';
 	}
-	if (!left_str || !buff)
+	if (!current_str || !buff)
 		return (NULL);
-	left_str_len = ft_strlen(left_str);
+	current_str_len = ft_strlen(current_str);
 	buff_len = ft_strlen(buff);
-	result = (char *)malloc(sizeof(char) * (left_str_len + buff_len + 1));
+	result = (char *)malloc(sizeof(char) * (current_str_len + buff_len + 1));
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, left_str, left_str_len);
-	ft_memcpy(result + left_str_len, buff, buff_len);
-	result[left_str_len + buff_len] = '\0';
-	free(left_str);//add
+	ft_memcpy(result, current_str, current_str_len);
+	ft_memcpy(result + current_str_len, buff, buff_len);
+	result[current_str_len + buff_len] = '\0';
+	free(current_str);
 	return (result);
 }

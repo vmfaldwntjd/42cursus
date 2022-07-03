@@ -6,7 +6,7 @@
 /*   By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 17:34:39 by jchin             #+#    #+#             */
-/*   Updated: 2022/07/03 19:29:33 by jchin            ###   ########.fr       */
+/*   Updated: 2022/07/04 00:40:01 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_read_to_left_str(int fd, char *left_str);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *left_str, char *buff);
 size_t	ft_strlen(char *s);
