@@ -6,7 +6,7 @@
 /*   By: jchin <jchin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:10:12 by jchin             #+#    #+#             */
-/*   Updated: 2022/04/01 18:01:06 by jchin            ###   ########.fr       */
+/*   Updated: 2022/08/27 11:26:18 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include	<stdlib.h>
 # include	<unistd.h>
 # include	<limits.h>
+
 typedef struct s_list
 {
 	void			*content;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jchin <jchin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:40:58 by ajordan-          #+#    #+#             */
-/*   Updated: 2022/08/26 19:32:14 by jchin            ###   ########.fr       */
+/*   Updated: 2022/08/27 11:22:50 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	ft_put_str(char *str)
 	}
 }
 
-int	ft_print_string(char *str)//문자열을 출력해주고, 문자열의 길이를 반환해준다.
+int	ft_print_string(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str == NULL)//문자열이 없다면
+	if (str == NULL)
 	{
-		ft_put_str("(null)");//없다고 출력
-		return (6);//(Null)의 길이 6을 반환
+		ft_put_str("(null)");
+		return (6);
 	}
 	while (str[i])
 	{
@@ -43,16 +43,16 @@ int	ft_print_string(char *str)//문자열을 출력해주고, 문자열의 길�
 	return (i);
 }
 
-int	ft_print_nbr(int n)//% 뒤에 i, d가 오는 경우
+int	ft_print_nbr(int n)
 {
 	int		length;
 	char	*num;
 
 	length = 0;
-	num = ft_itoa(n);//정수를 문자열로 변환
-	length = ft_print_string(num);//문자열의 길이를 재준다.
-	free(num);//ft_itoa에 malloc을 사용했으므로 메모리 반환을 해줘야 한다.
-	return (length);//길이를 반환
+	num = ft_itoa(n);
+	length = ft_print_string(num);
+	free(num);
+	return (length);
 }
 
 int	ft_print_percent(void)

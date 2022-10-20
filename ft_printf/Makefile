@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: jchin <jchin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/06 09:51:37 by ajordan-          #+#    #+#              #
-#    Updated: 2022/08/26 18:14:39 by jchin            ###   ########.fr        #
+#    Updated: 2022/08/27 11:35:32 by jchin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS		= -Wall -Werror -Wextra -I
 RM			= rm -f
 AR			= ar rcs
 
-SRC_FILES	=	ft_printf.c ft_printf_utils.c ft_print_ptr.c ft_print_unsigned_int.c ft_print_hex.c
+SRC_FILES	=	ft_printf.c tools.c ft_print_ptr.c ft_print_unsigned_int.c ft_print_hex.c
 OBJS = $(SRC_FILES:.c=.o)
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
