@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchin <jchin@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jchin <jchin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 22:01:31 by jchin             #+#    #+#             */
-/*   Updated: 2022/08/26 09:08:08 by jchin            ###   ########.fr       */
+/*   Created: 2022/03/30 11:09:21 by jchin             #+#    #+#             */
+/*   Updated: 2022/03/30 11:13:08 by jchin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
+	t_list	*current;
 
-	if (!s && !n)
-		return ;
-	i = 0;
-	while (i < n)
-	{
-		*(unsigned char *)(s + i) = 0;
-		++i;
-	}
+	if (!lst)
+		return (0);
+	current = lst;
+	while (current->next)
+		current = current->next;
+	return (current);
 }
